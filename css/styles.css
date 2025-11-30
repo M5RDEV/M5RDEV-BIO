@@ -112,16 +112,16 @@ body {
     position: relative;
     width: 140px;
     height: 140px;
-    margin: 0 auto 15px;
+    margin: 0 auto 10px;
 }
 
 .profile-image-ring {
     position: absolute;
-    inset: -5px;
+    inset: -7px;
     border-radius: 50%;
     background: linear-gradient(45deg, #667eea, #5b397e, #f093fb, #f5576c);
     animation: rotate-ring 3s linear infinite;
-    padding: 3px;
+    padding: 0px;
 }
 
 @keyframes rotate-ring {
@@ -139,7 +139,7 @@ body {
     height: 140px;
     border-radius: 50%;
     overflow: hidden;
-    border: 5px solid #000;
+    border: 0px solid #ffff;
     z-index: 1;
 }
 
