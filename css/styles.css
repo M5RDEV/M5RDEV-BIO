@@ -138,8 +138,8 @@ body {
     width: 140px;
     height: 140px;
     border-radius: 50%;
+    object-fit: cover;
     overflow: hidden;
-    border: 0px solid #ffff;
     z-index: 1;
 }
 
@@ -361,7 +361,132 @@ body {
     font-size: 13px;
 }
 
-/* Responsive */
+/* Language switcher (top-left) */
+.lang-switcher {
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    z-index: 2000;
+    display: block; /* keep the button fixed in place */
+    text-align: left;
+    pointer-events: auto;
+}
+
+.lang-btn {
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.9);
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 180ms ease, background 180ms ease;
+}
+
+.lang-btn:hover {
+    background: rgba(255,255,255,0.06);
+    transform: translateY(-2px);
+}
+
+.lang-btn.open {
+    transform: rotate(90deg) scale(0.98);
+}
+
+/* position dropdown absolutely relative to the fixed container so the button stays in place */
+.lang-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 0;
+    background: rgba(10,10,10,0.9);
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 8px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    min-width: 130px;
+    direction: ltr; /* keep dropdown layout LTR so checkmark is on the visual end */
+    opacity: 0;
+    transform-origin: top left;
+    transform: translateY(-6px) scale(0.98);
+    transition: opacity 180ms ease, transform 180ms ease;
+    pointer-events: none;
+}
+
+.lang-dropdown.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.lang-dropdown.hide {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+    pointer-events: none;
+}
+
+.lang-option {
+    background: transparent;
+    border: none;
+    color: rgba(255,255,255,0.9);
+    text-align: left;
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* keep text opposite checkmark */
+    flex-direction: row; /* ensure label then check in row */
+    direction: ltr; /* force visual order so check appears at the visual end */
+}
+
+.lang-option .label {
+    flex: 1;
+    direction: auto; /* allow the label text to choose its own direction */
+    text-align: start;
+    order: 1;
+}
+
+.lang-option .check {
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.95);
+    opacity: 0;
+    transition: opacity 140ms ease, transform 140ms ease;
+    transform: scale(0.8);
+    order: 2;
+    margin-left: 8px;
+}
+
+.lang-option.selected .check {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* small hover for options */
+.lang-option:hover {
+    background: rgba(255,255,255,0.03);
+}
+
+/* ensure dropdown positioned relative to fixed container */
+.lang-switcher { position: fixed; }
+
+/* Adjust position for small screens */
+@media (max-width: 480px) {
+    .lang-switcher { left: 12px; top: 12px; }
+    .lang-dropdown { min-width: 110px; }
+}
+
 @media (max-width: 768px) {
     .profile-card {
         padding: 40px 25px;
