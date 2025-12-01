@@ -12,7 +12,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 0px;
     position: relative;
     overflow-x: hidden;
 }
@@ -76,10 +76,12 @@ body {
 }
 
 .container {
-    max-width: 480px;
+    padding: 0 0!important;
     width: 100%;
+    max-width: 480px;
     position: relative;
-    z-index: 1;
+    border-radius: 10px;
+    scrollbar-width: none;
 }
 
 .profile-card {
@@ -90,6 +92,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
     animation: card-appear 1s ease-out;
+    margin: 0px !important;
 }
 
 @keyframes card-appear {
