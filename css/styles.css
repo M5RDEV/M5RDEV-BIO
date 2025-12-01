@@ -269,8 +269,9 @@ body {
 }
 
 .link-arrow {
+    margin:0 8px;
     z-index: 1;
-    opacity: 0.5;
+    opacity: 0.15;
     transition: all 0.4s ease;
     font-size: 15px;
 }
@@ -278,6 +279,16 @@ body {
 .social-link:hover .link-arrow {
     opacity: 1;
     transform: translateX(-5px);
+}
+
+/* Rotate the left arrow 180deg in all languages except Arabic (RTL) */
+html:not([dir="rtl"]) .link-arrow {
+    transform: rotate(180deg);
+}
+
+/* Preserve rotation when hovering for non-RTL pages */
+html:not([dir="rtl"]) .social-link:hover .link-arrow {
+    transform: rotate(180deg) translateX(-5px);
 }
 
 /* Custom Colors for Each Platform */
@@ -487,18 +498,108 @@ body {
     .lang-dropdown { min-width: 110px; }
 }
 
-@media (max-width: 768px) {
+/* Android / Mobile specific improvements */
+@media (max-width: 420px) {
+    /* keep background visible but lighter to save resources */
+    .bg-animation { display: block; pointer-events: none; }
+
+    .orb { filter: blur(60px); opacity: 0.28; }
+    .orb1 { width: 360px; height: 360px; top: -180px; right: -180px; }
+    .orb2 { width: 300px; height: 300px; bottom: -140px; left: -140px; }
+    .orb3 { width: 260px; height: 260px; top: 48%; left: 48%; }
+
+    /* push content down so language switcher doesn't cover the card */
+    body { align-items: flex-start; padding-top: 70px; }
+
+    /* make container scrollable inside viewport so card always accessible */
+    .container {
+        max-height: calc(100vh - 84px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 18px;
+    }
+
+    /* small visual tweaks so the card doesn't overflow the viewport */
     .profile-card {
-        padding: 40px 25px;
+        margin: 8px auto;
+        padding: 22px 16px 16px;
     }
 
-    .profile-name {
-        font-size: 28px;
-    }
-
-    .social-link {
-        padding: 18px 20px;
-    }
+    /* ensure lang-switcher sits above everything but doesn't overlap card visually */
+    .lang-switcher { z-index: 3000; }
 }
 
+/* Strict mobile fit: shrink container so everything fits inside viewport (no scroll) */
+@media (max-width: 420px) {
+    /* keep background but very light */
+    .bg-animation { display: block; }
+    .orb { filter: blur(50px); opacity: 0.22; }
+    .orb1 { width: 320px; height: 320px; top: -140px; right: -140px; }
+    .orb2 { width: 260px; height: 260px; bottom: -110px; left: -110px; }
+    .orb3 { width: 220px; height: 220px; top: 50%; left: 50%; }
 
+    /* make the page fit exactly in the viewport and avoid scrolling */
+    html, body { height: 100vh; overflow: hidden; }
+    body { align-items: center; padding: 12px; }
+
+    /* container sizing */
+    .container {
+        max-width: 360px;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 8px;
+    }
+
+    /* reduce card size and spacing so it fits vertically */
+    .profile-card {
+        padding: 14px 12px;
+        border-radius: 14px;
+        box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+        max-height: calc(100vh - 28px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .profile-header { margin-bottom: 8px; }
+
+    .profile-image-wrapper { width: 80px; height: 80px; }
+    .profile-image, .profile-image img { width: 80px; height: 80px; }
+
+    .profile-name { font-size: 20px; margin-bottom: 4px; }
+    .profile-bio { font-size: 13px; margin-bottom: 4px; }
+    .profile-location { font-size: 12px; gap: 4px; }
+
+    .social-links { gap: 8px; }
+    .social-link {
+        padding: 10px 12px;
+        border-radius: 12px;
+        font-size: 14px;
+    }
+
+    .link-icon { width: 34px; height: 34px; font-size: 18px; }
+    .link-text { font-size: 14px; }
+    .link-arrow { font-size: 14px; margin: 0 6px; }
+
+    .navigation { gap: 10px; margin: 10px 0; }
+    .nav-btn { width: 36px; height: 36px; font-size: 14px; }
+
+    .footer { padding: 6px 0; }
+
+    /* keep language button visible but smaller and not overlapping */
+    .lang-switcher { top: 10px; left: 10px; }
+    .lang-btn { width: 40px; height: 40px; font-size: 16px; }
+}
+
+/* Disable hover-only visuals on devices that don't support hover */
+@media (hover: none) {
+    .social-link::before { opacity: 0; }
+    .social-link:hover .link-icon { transform: none; }
+    .social-link:hover .link-arrow { transform: translateX(0); opacity: 0.9; }
+}
+
+/* Improve touch focus accessibility */
+.social-link:focus-visible {
+    outline: 3px solid rgba(102,126,234,0.18);
+    outline-offset: 2px;
+}
