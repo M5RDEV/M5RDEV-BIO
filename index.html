@@ -11,6 +11,27 @@
 </head>
 
 <body>
+    <!-- Language selector (top-left) -->
+    <div class="lang-switcher" id="langSwitcher">
+        <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false" title="Change language">
+            <i class="fas fa-globe"></i>
+        </button>
+        <div class="lang-dropdown" id="langDropdown" aria-label="Language selector" hidden>
+            <button class="lang-option" data-lang="ar">العربية</button>
+            <button class="lang-option" data-lang="en">English</button>
+            <button class="lang-option" data-lang="es">Español</button>
+            <button class="lang-option" data-lang="fr">Français</button>
+            <button class="lang-option" data-lang="pt">Português</button>
+            <button class="lang-option" data-lang="tr">Türkçe</button>
+            <button class="lang-option" data-lang="ru">Русский</button>
+
+            <button class="lang-option" data-lang="zh">中文</button>
+            <button class="lang-option" data-lang="hi">हिन्दी</button>
+            <button class="lang-option" data-lang="bn">বাংলা</button>
+            <button class="lang-option" data-lang="ur">اردو</button>
+        </div>
+    </div>
+
     <div class="bg-animation">
         <div class="orb orb1"></div>
         <div class="orb orb2"></div>
@@ -27,10 +48,10 @@
                     </div>
                 </div>
                 <h1 class="profile-name">M5RDEV</h1>
-                <p class="profile-bio">مبرمج مواقع و برامج ومطور ألعاب</p>
+                <p class="profile-bio" id="profileBio">مبرمج مواقع و برامج ومطور ألعاب</p>
                 <div class="profile-location">
                     <i class="fas fa-map-marker-alt"></i>
-                    <span>دمنهور، البحيرة، مصر</span>
+                    <span id="profileLocation">دمنهور، البحيرة، مصر</span>
                 </div>
             </div>
 
@@ -50,13 +71,13 @@
             </div>
 
             <div class="footer">
-                <p class="copyright">© 2025 جميع الحقوق محفوظة M5RDEV</p>
+                <p class="copyright"><span id="copyrightText">© 2025 جميع الحقوق محفوظة M5RDEV</span></p>
             </div>
         </div>
     </div>
 
     <script src="js/script.js"></script>
 
-    </body>
+</body>
 
 </html>
