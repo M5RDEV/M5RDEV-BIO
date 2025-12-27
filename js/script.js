@@ -196,24 +196,50 @@ function displayCurrentLinks() {
   if (currentPage > totalPages - 1) currentPage = totalPages - 1;
 
   const start = currentPage * linksPerPage;
-  socialLinksData.slice(start, start + linksPerPage).forEach((link, idx) => {
-    const globalIdx = start + idx;
-    const langPack = translations[currentLang] || translations.ar;
-    const text = (langPack.social && langPack.social[link.platform]) || (translations.en && translations.en.social && translations.en.social[link.platform]) || link.platform;
-    const a = document.createElement('a');
-    a.href = link.url;
-    a.target = '_blank';
-    a.className = `social-link ${link.platform}`;
-    a.style.animationDelay = `${0.1 + idx * 0.05}s`;
-    a.innerHTML = `
+  const pageItems = socialLinksData.slice(start, start + linksPerPage);
+  // explicitly set grid rows to match number of visible items so no empty slots are reserved
+  if (pageItems.length) {
+    socialLinksContainer.style.gridTemplateRows = `repeat(${pageItems.length}, auto)`;
+  } else {
+    socialLinksContainer.style.gridTemplateRows = '';
+  }
+
+  // Always render exactly `linksPerPage` slots. If page has fewer items,
+  // create invisible placeholders so the layout keeps 3 reserved slots.
+  for (let i = 0; i < linksPerPage; i++) {
+    const link = pageItems[i];
+    const idx = i;
+    if (link) {
+      const globalIdx = start + idx;
+      const langPack = translations[currentLang] || translations.ar;
+      const text = (langPack.social && langPack.social[link.platform]) || (translations.en && translations.en.social && translations.en.social[link.platform]) || link.platform;
+      const a = document.createElement('a');
+      a.href = link.url;
+      a.target = '_blank';
+      a.className = `social-link ${link.platform}`;
+      a.style.animationDelay = `${0.1 + idx * 0.05}s`;
+      a.innerHTML = `
       <div class="link-content">
         <div class="link-icon"><i class="${link.icon}"></i></div>
         <span class="link-text">${text}</span>
       </div>
       <i class="fas fa-arrow-left link-arrow"></i>
     `;
-    socialLinksContainer.appendChild(a);
-  });
+      socialLinksContainer.appendChild(a);
+    } else {
+      // placeholder element: keep space but invisible
+      const ph = document.createElement('div');
+      ph.className = 'social-link placeholder';
+      ph.innerHTML = `
+      <div class="link-content">
+        <div class="link-icon"></div>
+        <span class="link-text"></span>
+      </div>
+      <i class="fas fa-arrow-left link-arrow"></i>
+    `;
+      socialLinksContainer.appendChild(ph);
+    }
+  }
 
   prevBtn.disabled = currentPage === 0;
   nextBtn.disabled = currentPage >= Math.ceil(socialLinksData.length / linksPerPage) - 1;
