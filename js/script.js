@@ -1,33 +1,169 @@
 // --- Data ---------------------------------------------------------
 const socialLinksData = [
   { platform: 'youtube', icon: 'fab fa-youtube', url: 'https://youtube.com/@M5RDEV' },
+  { platform: 'tiktok', icon: 'fab fa-tiktok', url: 'https://www.tiktok.com/@m5rdev' },
+  { platform: 'Discord', icon: 'fab fa-discord', url: 'https://discord.gg/AnBNEdPK' },
+
+  { platform: 'facebook', icon: 'fab fa-facebook', url: 'https://www.facebook.com/M5RDEV.Facebook' },
   { platform: 'instagram', icon: 'fab fa-instagram', url: 'https://instagram.com/M5RDEV' },
-  { platform: 'github', icon: 'fab fa-github', url: 'https://github.com/M5RDEV' },
-  { platform: 'website', icon: 'fas fa-globe', url: 'https://m5rdev.github.io/M5RDEV' },
   { platform: 'twitter', icon: 'fab fa-twitter', url: 'https://twitter.com/M5RDEV' },
+
   { platform: 'whatsapp', icon: 'fab fa-whatsapp', url: 'https://whatsapp.com/channel/0029Vb6KQUGGJP8EJv0tpG2v' },
   { platform: 'telegram', icon: 'fab fa-telegram-plane', url: 'https://t.me/m5rdevchannel' },
-  { platform: 'linkedin', icon: 'fab fa-linkedin-in', url: 'https://linkedin.com/in/M5RDEV' }
+  { platform: 'linkedin', icon: 'fab fa-linkedin-in', url: 'https://linkedin.com/in/M5RDEV' },
+  
+  { platform: 'github', icon: 'fab fa-github', url: 'https://github.com/M5RDEV' },
+  { platform: 'ItchIo', icon: 'fab fa-itch-io', url: 'https://m5rdev.itch.io/' },
+  { platform: 'website', icon: 'fas fa-globe', url: 'https://m5rdev.github.io/M5RDEV' }
 ];
 
 const translations = {
-  ar: { dir: 'rtl', langAttr: 'ar', bio: 'مبرمج مواقع و برامج ومطور ألعاب', location: 'دمنهور، البحيرة، مصر', social: ['قناة اليوتيوب','إنستجرام','جيت هاب','الموقع الإلكتروني','تويتر','واتساب','تيليجرام','لينكد إن'], copyright: '© 2025 جميع الحقوق محفوظة M5RDEV' },
-  en: { dir: 'ltr', langAttr: 'en', bio: 'Web & software developer, game dev', location: 'Damanhur, Beheira, Egypt', social: ['YouTube','Instagram','GitHub','Website','Twitter','WhatsApp','Telegram','LinkedIn'], copyright: '© 2025 All rights reserved M5RDEV' },
-  es: { dir: 'ltr', langAttr: 'es', bio: 'Desarrollador web, software y juegos', location: 'Damanhur, Beheira, Egipto', social: ['YouTube','Instagram','GitHub','Sitio web','Twitter','WhatsApp','Telegram','LinkedIn'], copyright: '© 2025 Todos los derechos reservados M5RDEV' },
-  fr: { dir: 'ltr', langAttr: 'fr', bio: 'Développeur web, logiciel et jeux', location: 'Damanhour, Beheira, Égypte', social: ['Chaîne YouTube','Instagram','GitHub','Site web','Twitter','WhatsApp','Telegram','LinkedIn'], copyright: '© 2025 Tous droits réservés M5RDEV' },
-  zh: { dir: 'ltr', langAttr: 'zh', bio: '网站与软件开发者，游戏开发', location: '达曼胡尔，贝海拉，埃及', social: ['YouTube','Instagram','GitHub','网站','Twitter','WhatsApp','Telegram','LinkedIn'], copyright: '© 2025 版权所有 M5RDEV' },
-  hi: { dir: 'ltr', langAttr: 'hi', bio: 'वेब और सॉफ़्टवेयर डेवलपर, गेम डेवलपर', location: 'डमनहुर, बीचेरा, मिस्र', social: ['YouTube','Instagram','GitHub','वेबसाइट','Twitter','WhatsApp','Telegram','LinkedIn'], copyright: '© 2025 सर्वाधिकार सुरक्षित M5RDEV' },
-  pt: { dir: 'ltr', langAttr: 'pt', bio: 'Desenvolvedor web, software e jogos', location: 'Damanhur, Beheira, Egito', social: ['YouTube','Instagram','GitHub','Website','Twitter','WhatsApp','Telegram','LinkedIn'], copyright: '© 2025 Todos os direitos reservados M5RDEV' },
-  bn: { dir: 'ltr', langAttr: 'bn', bio: 'ওয়েব ও সফটওয়্যার ডেভেলপার, গেম ডেভ', location: 'ডামানহুর, বেহেইরা, মিশর', social: ['YouTube','Instagram','GitHub','ওয়েবসাইট','Twitter','WhatsApp','Telegram','LinkedIn'], copyright: '© 2025 সর্বস্বত্ব সংরক্ষিত M5RDEV' },
-  ru: { dir: 'ltr', langAttr: 'ru', bio: 'Веб и софт разработчик, разработчик игр', location: 'Даманхур, Бехейра, Египет', social: ['YouTube','Instagram','GitHub','Веб-сайт','Twitter','WhatsApp','Telegram','LinkedIn'], copyright: '© 2025 Все права защищены M5RDEV' },
-  tr: { dir: 'ltr', langAttr: 'tr', bio: 'Web ve yazılım geliştiricisi, oyun geliştiricisi', location: 'Damanhur, Beheira, Mısır', social: ['YouTube','Instagram','GitHub','Web Sitesi','Twitter','WhatsApp','Telegram','LinkedIn'], copyright: '© 2025 Tüm hakları saklıdır M5RDEV' },
-  ur: { dir: 'rtl', langAttr: 'ur', bio: 'ویب اور سافٹ ویئر ڈویلپر، گیم ڈویلپر', location: 'ڈمنہور، بہیرہ، مصر', social: ['یوٹیوب','انسٹاگرام','گیٹ ہب','ویب سائٹ','ٹوئٹر','واٹس ایپ','ٹیلیگرام','لنکڈ اِن'], copyright: '© 2025 جملہ حقوق محفوظ ہیں M5RDEV' }
+  ar: {
+    dir: 'rtl',
+    langAttr: 'ar',
+    bio: 'مبرمج مواقع و برامج ومطور ألعاب',
+    location: 'دمنهور، البحيرة، مصر',
+    social: {
+      youtube: 'قناة اليوتيوب',
+      tiktok: 'تيك توك',
+      Discord: 'ديسكورد',
+      facebook: 'فيسبوك',
+      instagram: 'إنستجرام',
+      ItchIo: 'إيتش آيو',
+      github: 'جيت هاب',
+      website: 'الموقع الإلكتروني',
+      twitter: 'تويتر',
+      whatsapp: 'واتساب',
+      telegram: 'تيليجرام',
+      linkedin: 'لينكد إن'
+    },
+    copyright: '© 2025 جميع الحقوق محفوظة M5RDEV'
+  },
+  en: {
+    dir: 'ltr',
+    langAttr: 'en',
+    bio: 'Web & software developer, game dev',
+    location: 'Damanhur, Beheira, Egypt',
+    copyright: '© 2025 All rights reserved M5RDEV'
+  },
+  es: {
+    dir: 'ltr',
+    langAttr: 'es',
+    bio: 'Desarrollador web, software y juegos',
+    location: 'Damanhur, Beheira, Egipto',
+    social: {
+      website: 'Sitio web',
+    },
+    copyright: '© 2025 Todos los derechos reservados M5RDEV'
+  },
+  fr: {
+    dir: 'ltr',
+    langAttr: 'fr',
+    bio: 'Développeur web, logiciel et jeux',
+    location: 'Damanhour, Beheira, Égypte',
+    social: {
+      youtube: 'Chaîne YouTube',
+    },
+    copyright: '© 2025 Tous droits réservés M5RDEV'
+  },
+  zh: {
+    dir: 'ltr',
+    langAttr: 'zh',
+    bio: '网站与软件开发者，游戏开发',
+    location: '达曼胡尔，贝海拉，埃及',
+    social: {
+      Discord: 'Discord 频道',
+      website: '网站',
+    },
+    copyright: '© 2025 版权所有 M5RDEV'
+  },
+  hi: {
+    dir: 'ltr',
+    langAttr: 'hi',
+    bio: 'वेब और सॉफ़्टवेयर डेवलपर, गेम डेवलपर',
+    location: 'डमनहुर, बीचेरा, मिस्र',
+    social: {
+      Discord: 'डिस्कॉर्ड',
+      website: 'वेबसाइट',
+    },
+    copyright: '© 2025 सर्वाधिकार सुरक्षित M5RDEV'
+  },
+  pt: {
+    dir: 'ltr',
+    langAttr: 'pt',
+    bio: 'Desenvolvedor web, software e jogos',
+    location: 'Damanhur, Beheira, Egito',
+    copyright: '© 2025 Todos os direitos reservados M5RDEV'
+  },
+  bn: {
+    dir: 'ltr',
+    langAttr: 'bn',
+    bio: 'ওয়েব ও সফটওয়্যার ডেভেলপার, গেম ডেভ',
+    location: 'ডামানহুর, বেহেইরা, মিশর',
+    social: {
+      Discord: 'ডিস্কোর্ড',
+      website: 'ওয়েবসাইট',
+    },
+    copyright: '© 2025 সর্বস্বত্ব সংরক্ষিত M5RDEV'
+  },
+  ru: {
+    dir: 'ltr',
+    langAttr: 'ru',
+    bio: 'Веб и софт разработчик, разработчик игр',
+    location: 'Даманхур, Бехейра, Египет',
+    social: {
+      youtube: 'Ютуб',
+      tiktok: 'ТикТок',
+      instagram: 'Инстаграм',
+      github: 'Гитхаб',
+      twitter: 'Твиттер',
+      whatsapp: 'Ватсап',
+      telegram: 'Телеграм',
+      linkedin: 'Линкедин',
+      ItchIo: 'Ич Ай О',
+      Discord: 'Дискорд',
+      facebook: 'Фейсбук',
+      website: 'Веб-сайт',
+    },
+    copyright: '© 2025 Все права защищены M5RDEV'
+  },
+  tr: {
+    dir: 'ltr',
+    langAttr: 'tr',
+    bio: 'Web ve yazılım geliştiricisi, oyun geliştiricisi',
+    location: 'Damanhur, Beheira, Mısır',
+    social: {
+      website: 'Web Sitesi',
+    },
+    copyright: '© 2025 Tüm hakları saklıdır M5RDEV'
+  },
+  ur: {
+    dir: 'rtl',
+    langAttr: 'ur',
+    bio: 'ویب اور سافٹ ویئر ڈویلپر، گیم ڈویلپر',
+    location: 'ڈمنہور، بہیرہ، مصر',
+    social: {
+      Discord: 'ڈیسکورڈ',
+      facebook: 'فیس بک',
+      ItchIo: 'اِیچ آئی او',
+      youtube: 'یوٹیوب',
+      tiktok: 'تيك توك',
+      instagram: 'انسٹاگرام',
+      github: 'گیٹ ہب',
+      website: 'ویب سائٹ',
+      twitter: 'ٹوئٹر',
+      whatsapp: 'واٹس ایپ',
+      telegram: 'ٹیلیگرام',
+      linkedin: 'لنکڈ اِن'
+    },
+    copyright: '© 2025 جملہ حقوق محفوظ ہیں M5RDEV'
+  }
 };
 
 // --- State & DOM refs --------------------------------------------
 let currentLang = localStorage.getItem('siteLang') || document.documentElement.lang || 'ar';
 let currentPage = 0;
-const linksPerPage = 4;
+const linksPerPage = 3;
 
 const socialLinksContainer = document.getElementById('socialLinks');
 const prevBtn = document.getElementById('prevBtn');
@@ -62,7 +198,8 @@ function displayCurrentLinks() {
   const start = currentPage * linksPerPage;
   socialLinksData.slice(start, start + linksPerPage).forEach((link, idx) => {
     const globalIdx = start + idx;
-    const text = (translations[currentLang] && translations[currentLang].social[globalIdx]) || link.platform;
+    const langPack = translations[currentLang] || translations.ar;
+    const text = (langPack.social && langPack.social[link.platform]) || (translations.en && translations.en.social && translations.en.social[link.platform]) || link.platform;
     const a = document.createElement('a');
     a.href = link.url;
     a.target = '_blank';
