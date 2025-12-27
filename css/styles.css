@@ -184,6 +184,9 @@ body {
 .social-links {
     display: grid;
     gap: 10px;
+    /* ensure rows size to their content so empty slots aren't reserved */
+    grid-auto-rows: min-content;
+    align-items: start;
     transition: opacity 0.3s ease;
 }
 
@@ -282,6 +285,13 @@ body {
 .social-link:hover .link-arrow {
     opacity: 1;
     transform: translateX(-5px);
+}
+
+/* Placeholder item: invisible but keeps layout space for consistent rows */
+.social-link.placeholder {
+    visibility: hidden;
+    pointer-events: none;
+    animation: none !important;
 }
 
 /* Rotate the left arrow 180deg in all languages except Arabic (RTL) */
